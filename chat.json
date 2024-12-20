@@ -872,5 +872,15 @@
         "source": "tool:DeployAndGenerateFrontend",
         "content": "Deploying the MintingContract and generating the frontend...",
         "metadata": {}
+    },
+    {
+        "id": "3ace2274-78c9-4a9c-9384-0be98265bb46",
+        "timestamp": "2024-12-20T11:49:30.358497Z",
+        "role": "tool_result",
+        "source": "DeployAndGenerateFrontend",
+        "content": "Success: deployed contract to 0x780f8aF60062D5CBE56097A4c52e9e9d452f1D66 on Sepolia (Ethereum testnet)",
+        "metadata": {
+            "tool_call_id": "call_e1thNnaJb2lkoUjCtTwwuT6F"
+        }
     }
 ]
