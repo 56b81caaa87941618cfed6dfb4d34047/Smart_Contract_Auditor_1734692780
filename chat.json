@@ -153,5 +153,20 @@
         "metadata": {
             "tool_call_id": "call_y70z7unbULhe1xQ6VlsYPkNz"
         }
+    },
+    {
+        "id": "08488f83-cf37-4499-972e-4f3bf37a8a01",
+        "timestamp": "2024-12-20T11:12:27.569622Z",
+        "role": "tool_call",
+        "source": "smart_contract_assistant",
+        "content": null,
+        "metadata": {
+            "id": "call_S248n3XLT8TOczjBxZO2oXp1",
+            "function": {
+                "arguments": "{\"contract_name\":\"StakingContract\",\"smart_contract_code\":\"// SPDX-License-Identifier: MIT\\npragma solidity 0.8.20;\\n\\nimport \\\"@openzeppelin/contracts/security/ReentrancyGuard.sol\\\";\\nimport \\\"@openzeppelin/contracts/utils/math/SafeMath.sol\\\";\\n\\ncontract StakingContract is ReentrancyGuard {\\n    using SafeMath for uint256;\\n\\n    struct Stake {\\n        uint256 amount;\\n        uint256 timestamp;\\n    }\\n\\n    mapping(address => Stake) public stakes;\\n    uint256 public totalStaked;\\n    uint256 public constant REWARD_RATE = 10; // 10% per year\\n\\n    event Deposited(address indexed user, uint256 amount);\\n    event Withdrawn(ad...\",\"audit_focus\":null,\"acknowledgement_message\":\"Starting the security audit of your StakingContract...\"}",
+                "name": "AuditSmartContract"
+            },
+            "type": "function"
+        }
     }
 ]
