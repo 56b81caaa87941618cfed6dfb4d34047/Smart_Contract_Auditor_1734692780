@@ -1,0 +1,64 @@
+{
+    "name": "example",
+    "prefix": "%#PLACEHOLDER",
+    "placeholderMappings": {
+        "Blank": [],
+        "Header": [
+            "APPLICATION_NAME"
+        ],
+        "Hero": [
+            "HERO_HEADING_TEXT",
+            "HERO_SUBHEADING_TEXT"
+        ],
+        "Footer": [
+            "APPLICATION_NAME",
+            "FOOTER_TEXT"
+        ],
+        "Newsletter": [
+            "NEWSLETTER_HEADING_TEXT",
+            "NEWSLETTER_SUBHEADING_TEXT",
+            "NEWSLETTER_BUTTON_TEXT"
+        ],
+        "About": [
+            "ABOUT_MISSION_STATMENT",
+            "ABOUT_VISION_STATEMENT",
+            "ABOUT_VALUES_STATEMENT"
+        ],
+        "Contact": [
+            "CONTACT_HEADER_TEXT",
+            "CONTACT_SUBHEADER_TEXT"
+        ],
+        "FAQ": [
+            "FAQ_HEADER_TEXT",
+            "FAQ_SUBHEADER_TEXT",
+            "FAQ_QUESTION_01_TEXT",
+            "FAQ_ANSWER_01_TEXT",
+            "FAQ_QUESTION_02_TEXT",
+            "FAQ_ANSWER_02_TEXT",
+            "FAQ_QUESTION_03_TEXT",
+            "FAQ_ANSWER_03_TEXT"
+        ]
+    },
+    "placeholders": {
+        "APPLICATION_NAME": "SecureChain Audits",
+        "HERO_HEADING_TEXT": "Fortifying Smart Contracts, Securing Blockchain Future",
+        "HERO_SUBHEADING_TEXT": "Expert smart contract audits to protect your blockchain projects from vulnerabilities and ensure maximum security",
+        "FOOTER_TEXT": "\u00a9 2023 SecureChain Audits. Safeguarding blockchain innovation through rigorous smart contract auditing.",
+        "NEWSLETTER_HEADING_TEXT": "Stay Informed on Smart Contract Security",
+        "NEWSLETTER_SUBHEADING_TEXT": "Subscribe to our newsletter for the latest updates on blockchain security and smart contract best practices",
+        "NEWSLETTER_BUTTON_TEXT": "Subscribe Now",
+        "ABOUT_MISSION_STATMENT": "Our mission is to enhance the security and reliability of blockchain ecosystems by providing thorough and unbiased smart contract audits.",
+        "ABOUT_VISION_STATEMENT": "We envision a blockchain landscape where every smart contract is secure, efficient, and trustworthy, fostering widespread adoption of decentralized technologies.",
+        "ABOUT_VALUES_STATEMENT": "Integrity, expertise, and innovation drive our commitment to delivering top-tier smart contract auditing services.",
+        "CONTACT_HEADER_TEXT": "Get Your Smart Contracts Audited",
+        "CONTACT_SUBHEADER_TEXT": "Reach out to our team of expert auditors for a comprehensive security assessment of your blockchain projects",
+        "FAQ_QUESTION_01_TEXT": "What is a smart contract audit?",
+        "FAQ_ANSWER_01_TEXT": "A smart contract audit is a comprehensive review and analysis of blockchain-based smart contract code to identify potential vulnerabilities, security flaws, and optimize efficiency.",
+        "FAQ_QUESTION_02_TEXT": "Why is smart contract auditing important?",
+        "FAQ_ANSWER_02_TEXT": "Smart contract auditing is crucial to ensure the security, reliability, and efficiency of blockchain applications, preventing potential hacks, bugs, and financial losses.",
+        "FAQ_QUESTION_03_TEXT": "How long does a typical smart contract audit take?",
+        "FAQ_ANSWER_03_TEXT": "The duration of an audit depends on the complexity and size of the smart contract, typically ranging from a few days to several weeks for thorough analysis and reporting.",
+        "FAQ_HEADER_TEXT": "Frequently Asked Questions",
+        "FAQ_SUBHEADER_TEXT": "Find answers to common queries about our smart contract auditing services and processes"
+    }
+}
