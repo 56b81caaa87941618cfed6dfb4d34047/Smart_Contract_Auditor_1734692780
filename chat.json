@@ -849,5 +849,20 @@
         "metadata": {
             "tool_call_id": "call_NKRoEAfdoXoLYVLeLsPAfzc8"
         }
+    },
+    {
+        "id": "22332eac-3b3b-4427-b896-c870181ab423",
+        "timestamp": "2024-12-20T11:48:57.288773Z",
+        "role": "tool_call",
+        "source": "smart_contract_assistant",
+        "content": null,
+        "metadata": {
+            "id": "call_e1thNnaJb2lkoUjCtTwwuT6F",
+            "function": {
+                "arguments": "{\"contract_id\":\"MintingContract\",\"chain\":\"SEPOLIA\",\"frontend_description\":\"Minting contract interface for the custom token. Allows the owner to mint tokens and manage the mint limit.\",\"acknowledgement_message\":\"Deploying the MintingContract and generating the frontend...\"}",
+                "name": "DeployAndGenerateFrontend"
+            },
+            "type": "function"
+        }
     }
 ]
