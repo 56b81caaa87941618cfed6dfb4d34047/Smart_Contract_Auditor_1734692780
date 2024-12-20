@@ -663,5 +663,13 @@
             },
             "type": "function"
         }
+    },
+    {
+        "id": "6a3b7b1f-effc-4b92-87f3-f13599ca1011",
+        "timestamp": "2024-12-20T11:46:09.336432Z",
+        "role": "assistant",
+        "source": "tool:WriteOrEditSmartContract",
+        "content": "Generating the minting contract for your custom token...",
+        "metadata": {}
     }
 ]
