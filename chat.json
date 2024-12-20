@@ -143,5 +143,15 @@
             },
             "type": "function"
         }
+    },
+    {
+        "id": "3d32f560-7493-411b-90ca-9234e3dbfadf",
+        "timestamp": "2024-12-20T11:12:22.378993Z",
+        "role": "tool_result",
+        "source": "ReadSmartContractCode",
+        "content": "\n// SPDX-License-Identifier: MIT\npragma solidity 0.8.20;\n\nimport \"@openzeppelin/contracts/security/ReentrancyGuard.sol\";\nimport \"@openzeppelin/contracts/utils/math/SafeMath.sol\";\n\ncontract StakingContract is ReentrancyGuard {\n    using SafeMath for uint256;\n\n    struct Stake {\n        uint256 amount;\n        uint256 timestamp;\n    }\n\n    mapping(address => Stake) public stakes;\n    uint256 public totalStaked;\n    uint256 public constant REWARD_RATE = 10; // 10% per year\n\n    event Deposited(address indexed user, uint256 amount);\n    event Withdrawn(address indexed user, uint256 amount, uint256 reward);\n\n    function deposit() external payable nonReentrant {\n        receiveDeposit();\n    }\n\n    function withdraw() external nonReentrant {\n        Stake storage userStake = stakes[msg.sender];\n        require(userStake.amount > 0, \"No stake to withdraw\");\n\n        uint256 reward = calculateRewards(msg.sender);\n        uint256 totalAmount = userStake.amount.add(reward);\n\n        require(address(this).balance >= totalAmount, \"Insufficient contract balance\");\n\n        totalStaked = totalStaked.sub(userStake.amount);\n        delete stakes[msg.sender];\n\n        (bool success, ) = payable(msg.sender).call{value: totalAmount}(\"\");\n        require(success, \"Transfer failed\");\n\n        emit Withdrawn(msg.sender, userStake.amount, reward);\n    }\n\n    function calculateRewards(address user) public view returns (uint256) {\n        Stake memory userStake = stakes[user];\n        if (userStake.amount == 0) {\n            return 0;\n        }\n        uint256 stakingDuration = block.timestamp.sub(userStake.timestamp);\n        return userStake.amount.mul(REWARD_RATE).mul(stakingDuration).div(365 days).div(100);\n    }\n\n    function getStakedBalance(address user) external view returns (uint256) {\n        return stakes[user].amount;\n    }\n\n    function getTotalStaked() external view returns (uint256) {\n        return totalStaked;\n    }\n\n    receive() external payable {\n        receiveDeposit();\n    }\n\n    function receiveDeposit() internal {\n        require(msg.value > 0, \"Must deposit some ETH\");\n\n        Stake storage userStake = stakes[msg.sender];\n        if (userStake.amount > 0) {\n            uint256 reward = calculateRewards(msg.sender);\n            userStake.amount = userStake.amount.add(reward);\n        }\n\n        userStake.amount = userStake.amount.add(msg.value);\n        userStake.timestamp = block.timestamp;\n        totalStaked = totalStaked.add(msg.value);\n\n        emit Deposited(msg.sender, msg.value);\n    }\n}\n",
+        "metadata": {
+            "tool_call_id": "call_y70z7unbULhe1xQ6VlsYPkNz"
+        }
     }
 ]
