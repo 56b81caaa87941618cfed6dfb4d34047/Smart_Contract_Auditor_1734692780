@@ -222,5 +222,20 @@
         "metadata": {
             "component_id": "Header1734692783"
         }
+    },
+    {
+        "id": "fbd4b7dd-7714-47b8-bebb-97903037daf6",
+        "timestamp": "2024-12-20T11:17:37.825578Z",
+        "role": "tool_call",
+        "source": "smart_contract_assistant",
+        "content": null,
+        "metadata": {
+            "id": "call_Jq6tkDtcpY90K0rDsANX7B1S",
+            "function": {
+                "arguments": "{\"contract_id\":\"StakingContract\",\"audit_focus\":null,\"acknowledgement_message\":\"Starting the security audit of your StakingContract...\"}",
+                "name": "AuditSmartContract"
+            },
+            "type": "function"
+        }
     }
 ]
