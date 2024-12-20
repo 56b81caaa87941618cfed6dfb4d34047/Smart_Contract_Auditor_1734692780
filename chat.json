@@ -915,5 +915,13 @@
             },
             "type": "function"
         }
+    },
+    {
+        "id": "9f45d9c3-7113-49a1-a517-d7ce2ff0159a",
+        "timestamp": "2024-12-20T13:15:57.187543Z",
+        "role": "assistant",
+        "source": "tool:WriteOrEditSmartContract",
+        "content": "Generating the vesting contract for your custom token...",
+        "metadata": {}
     }
 ]
