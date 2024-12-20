@@ -933,5 +933,20 @@
         "metadata": {
             "tool_call_id": "call_BzOrV4XcVJTUrOfbaCXu3DTd"
         }
+    },
+    {
+        "id": "ba5c7053-8e9c-4183-8cf3-714c723434e1",
+        "timestamp": "2024-12-20T13:16:24.649712Z",
+        "role": "tool_call",
+        "source": "smart_contract_assistant",
+        "content": null,
+        "metadata": {
+            "id": "call_nDw6ItrkFu5XpdKNYdKaUuNM",
+            "function": {
+                "arguments": "{\"contract_id\":\"VestingContract\",\"audit_focus\":null,\"acknowledgement_message\":\"Starting the security audit of your VestingContract...\"}",
+                "name": "AuditSmartContract"
+            },
+            "type": "function"
+        }
     }
 ]
