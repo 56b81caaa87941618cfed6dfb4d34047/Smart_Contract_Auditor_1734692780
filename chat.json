@@ -681,5 +681,20 @@
         "metadata": {
             "tool_call_id": "call_Qy0EzvrCDOBxo2GT2TuNdjFP"
         }
+    },
+    {
+        "id": "b941bd3e-f121-4a25-b530-21dfec147fb8",
+        "timestamp": "2024-12-20T11:46:26.051819Z",
+        "role": "tool_call",
+        "source": "smart_contract_assistant",
+        "content": null,
+        "metadata": {
+            "id": "call_LdZmsr0l8PkMceY7cLnHdiGr",
+            "function": {
+                "arguments": "{\"contract_id\": \"MintingContract\", \"audit_focus\": null, \"acknowledgement_message\": \"Starting the security audit of your MintingContract...\"}",
+                "name": "AuditSmartContract"
+            },
+            "type": "function"
+        }
     }
 ]
