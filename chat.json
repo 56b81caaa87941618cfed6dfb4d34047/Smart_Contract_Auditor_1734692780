@@ -6,5 +6,15 @@
         "source": "base_assistant",
         "content": "Welcome to your new project! I can help you edit it however you want. What would you like to do?",
         "metadata": {}
+    },
+    {
+        "id": "d5e7fe76-193f-44fe-91da-3f9c2b92948b",
+        "timestamp": "2024-12-20T11:10:48.522048Z",
+        "role": "user",
+        "source": "web_client",
+        "content": "generate a smart contract for sktaing",
+        "metadata": {
+            "component_id": "Header1734692783"
+        }
     }
 ]
