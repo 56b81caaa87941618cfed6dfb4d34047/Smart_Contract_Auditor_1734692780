@@ -3,9 +3,9 @@
 pragma solidity 0.8.20;
 
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
-import "@openzeppelin/contracts/access/Ownable.sol";
+import "@openzeppelin/contracts/access/Ownable2Step.sol";
 
-contract MintingContract is ERC20, Ownable {
+contract MintingContract is ERC20, Ownable2Step {
     uint256 public mintLimit;
 
     event MintLimitUpdated(uint256 newLimit);
@@ -25,10 +25,5 @@ contract MintingContract is ERC20, Ownable {
         require(newLimit >= totalSupply(), "New limit cannot be less than current total supply");
         mintLimit = newLimit;
         emit MintLimitUpdated(newLimit);
-    }
-
-    function increaseTotalSupply(uint256 amount) public onlyOwner {
-        uint256 newLimit = mintLimit + amount;
-        setMintLimit(newLimit);
     }
 }
