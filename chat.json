@@ -49,5 +49,15 @@
         "source": "smart_contract_assistant",
         "content": "Could you please provide more details about the functionality you need for the skating smart contract? For example, do you want to manage skating tickets, schedule skating sessions, or something else?",
         "metadata": {}
+    },
+    {
+        "id": "a67d405d-7696-464a-b782-9fdb3ed1d95f",
+        "timestamp": "2024-12-20T11:11:03.187466Z",
+        "role": "user",
+        "source": "web_client",
+        "content": "staking eth",
+        "metadata": {
+            "component_id": "Header1734692783"
+        }
     }
 ]
