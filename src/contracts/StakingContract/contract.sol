@@ -3,8 +3,10 @@
 pragma solidity 0.8.20;
 
 import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
+import "@openzeppelin/contracts/security/Pausable.sol";
+import "@openzeppelin/contracts/access/Ownable.sol";
 
-contract StakingContract is ReentrancyGuard {
+contract StakingContract is ReentrancyGuard, Pausable, Ownable {
     struct Stake {
         uint256 amount;
         uint256 timestamp;
@@ -19,15 +21,16 @@ contract StakingContract is ReentrancyGuard {
     uint256 private constant PRECISION_FACTOR = 1e18;
 
     event Deposited(address indexed user, uint256 amount);
-    event Withdrawn(address indexed user, uint256 amount, uint256 reward);
-    event RewardClaimed(address indexed user, uint256 reward);
+    event WithdrawnAndRewarded(address indexed user, uint256 stakedAmount, uint256 reward);
 
-    function deposit() external payable nonReentrant {
+    constructor() Ownable() {}
+
+    function deposit() external payable nonReentrant whenNotPaused {
         receiveDeposit();
     }
 
-    function withdraw() external nonReentrant {
-        Stake storage userStake = stakes[msg.sender];
+    function withdraw() external nonReentrant whenNotPaused {
+        Stake memory userStake = stakes[msg.sender];
         require(userStake.amount > 0, "No stake to withdraw");
 
         uint256 reward = calculateRewards(msg.sender);
@@ -43,8 +46,7 @@ contract StakingContract is ReentrancyGuard {
         (bool success, ) = payable(msg.sender).call{value: totalAmount}("");
         require(success, "Transfer failed");
 
-        emit Withdrawn(msg.sender, userStake.amount, reward);
-        emit RewardClaimed(msg.sender, reward);
+        emit WithdrawnAndRewarded(msg.sender, userStake.amount, reward);
     }
 
     function calculateRewards(address user) public view returns (uint256) {
@@ -53,10 +55,11 @@ contract StakingContract is ReentrancyGuard {
             return 0;
         }
         uint256 stakingDuration = block.timestamp - userStake.timestamp;
-        return (userStake.amount * REWARD_RATE * stakingDuration * PRECISION_FACTOR) / (365 days * 100 * PRECISION_FACTOR);
+        return (userStake.amount * REWARD_RATE * stakingDuration) / (365 days * 100);
     }
 
     function getStakedBalance(address user) external view returns (uint256) {
+        require(user != address(0), "Invalid address");
         return stakes[user].amount;
     }
 
@@ -72,13 +75,10 @@ contract StakingContract is ReentrancyGuard {
         require(msg.value >= MIN_STAKE, "Must deposit at least the minimum stake amount");
         require(msg.value + stakes[msg.sender].amount <= MAX_STAKE, "Exceeds maximum stake limit");
 
-        uint256 newStakeAmount = stakes[msg.sender].amount + msg.value;
-        uint256 newReward = 0;
+        uint256 newReward = calculateRewards(msg.sender);
+        uint256 newStakeAmount = stakes[msg.sender].amount + msg.value + newReward;
 
-        if (stakes[msg.sender].amount > 0) {
-            newReward = calculateRewards(msg.sender);
-            newStakeAmount += newReward;
-        }
+        require(address(this).balance >= newStakeAmount, "Insufficient contract balance");
 
         stakes[msg.sender] = Stake({
             amount: newStakeAmount,
@@ -89,7 +89,15 @@ contract StakingContract is ReentrancyGuard {
 
         emit Deposited(msg.sender, msg.value);
         if (newReward > 0) {
-            emit RewardClaimed(msg.sender, newReward);
+            emit WithdrawnAndRewarded(msg.sender, 0, newReward);
         }
+    }
+
+    function pause() external onlyOwner {
+        _pause();
+    }
+
+    function unpause() external onlyOwner {
+        _unpause();
     }
 }
