@@ -237,5 +237,13 @@
             },
             "type": "function"
         }
+    },
+    {
+        "id": "db87f105-50db-44e5-aac3-3d115fbd19db",
+        "timestamp": "2024-12-20T11:17:37.883475Z",
+        "role": "assistant",
+        "source": "tool:AuditSmartContract",
+        "content": "Starting the security audit of your StakingContract...",
+        "metadata": {}
     }
 ]
