@@ -890,5 +890,15 @@
         "source": "smart_contract_assistant",
         "content": "The MintingContract has been successfully deployed to the Sepolia testnet at address `0x25a5674f3D6Afb27e20820063B4fE2786bcB2e6D`. The frontend interface for interacting with the contract has also been generated.\n\nWould you like to perform any other actions or need further assistance?",
         "metadata": {}
+    },
+    {
+        "id": "587b64ad-ad3a-41b2-adcc-3619cba2ac6b",
+        "timestamp": "2024-12-20T13:15:51.608789Z",
+        "role": "user",
+        "source": "web_client",
+        "content": "generate a vesting contract for my own token",
+        "metadata": {
+            "component_id": "Header1734692783"
+        }
     }
 ]
